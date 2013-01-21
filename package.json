@@ -1,6 +1,6 @@
 {
   "name": "hopjs-oauth",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "OAuth2 provider support for hopjs",
   "main": "index.js",
   "keywords": [
