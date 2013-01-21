@@ -126,6 +126,7 @@ ProtectedService={};
 
 ProtectedService.logout=function(input,onComplete,req){
 	delete req.session.user;
+	return onComplete(null,true);
 }
 
 ProtectedService.login=function(input,onComplete,req){

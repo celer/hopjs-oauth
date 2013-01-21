@@ -6,7 +6,7 @@ var passport = require('passport');
 var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 var request = require('request');
 var os = require('os');
-var Hop = require('hopjs');
+var Hop = require('hopjs-remote');
 
 var hostname = os.hostname();
 var oauthProvider = 'http://'+hostname+':3000/'

@@ -11,6 +11,6 @@
     "passport": "~0.1.15",
     "passport-oauth": "~0.1.13",
     "request": "~2.12.0",
-    "hopjs": ">=0.0.8"
+    "hopjs-remote": ">=0.0.2"
   }
 }
