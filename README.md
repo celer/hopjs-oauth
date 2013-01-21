@@ -50,4 +50,4 @@ app.configure(function(){
 
 ```
 
-See http://github.com/celer/hopjs-oauth/examples/provider and http://github.com/celer/hopjs-oauth/examples/consumer for working examples
+See http://github.com/celer/hopjs-oauth/tree/master/examples/provider and http://github.com/celer/hopjs-oauth/tree/master/examples/consumer for working examples
