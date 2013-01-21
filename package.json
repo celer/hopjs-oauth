@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "oauth2-provider": "~1.2.0",
-    "hopjs": "0.0.5"
+    "hopjs": ">=0.0.6"
   }
 }

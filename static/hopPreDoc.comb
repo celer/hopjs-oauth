@@ -1,0 +1,7 @@
+<div>
+<h2>OAuth2 Support</h2>
+This application supports OAuth2 for user authenticaiton, to authenticate using OAuth2 please use the following URLs:
+<p>
+		<div><b>Authenticate:</b>GET <a href="<%=Hop.OAuthAuthorizeURI%>"><%=Hop.OAuthAuthorizeURI%></a></div>
+		<div><b>Authenticate:</b>POST <a href="<%=Hop.OAuthAccessTokenURI%>"><%=Hop.OAuthAccessTokenURI%></a></div>
+</div>

@@ -27,6 +27,7 @@ var provider = Hop.useOAuth({
 	loginURL: "/login",	
 	grantStore: new Hop.RedisGrantStore({ redisClient: redisClient, getUserId: getUserId, loadUserById: loadUserById }),
 	accessToken:function(req,token,next){
+		console.log("Access token request",token);
 		req.session.user=loadUserById(token.user_id);
 		next();
 	}
@@ -68,6 +69,15 @@ app.get("/login",function(req,res){
 		var next_url = req.query.next ? req.query.next:"/";
 		res.end('<html><form method="post" action="/login"><input type="hidden" name="next" value="' + next_url + '"><input type="text" placeholder="username" name="username"><input type="password" placeholder="password" name="password"><button type="submit">Login</button></form>');
 	}	
+});
+
+app.get("/secret",function(req,res){
+	if(req.session.user){
+		console.log("Session user",req.session.user);
+		res.send("OK");
+	} else {
+		res.send(500,"Permission denied");
+	}
 });
 
 app.post("/login",function(req,res){

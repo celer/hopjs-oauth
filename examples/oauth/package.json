@@ -13,6 +13,6 @@
     "connect": "~2.7.1",
     "oauth2-provider": "~1.2.0",
     "redis": "~0.8.2",
-    "hopjs": "0.0.5"
+    "hopjs": "0.0.6"
   }
 }
