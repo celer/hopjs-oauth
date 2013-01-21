@@ -6,6 +6,11 @@ var passport = require('passport');
 var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 var request = require('request');
 var os = require('os');
+var Hop = require('hopjs');
+
+var hostname = os.hostname();
+var oauthProvider = 'http://'+hostname+':3000/'
+
 
 var id=0;
 var users = {};
@@ -34,7 +39,6 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-var hostname = os.hostname();
 
 passport.use('provider',new OAuth2Strategy({
 	authorizationURL: 'http://'+hostname+':3000/oauth/authorize',
@@ -43,7 +47,6 @@ passport.use('provider',new OAuth2Strategy({
 	clientSecret: '234234324324',
 	callbackURL:'http://'+hostname+':3010/auth/provider/callback'
 },function(accessToken,refreshToken,profile,done){
-	console.log("DO IT",accessToken,refreshToken,profile);
 	User.findOrCreate({ accessToken : accessToken, refreshToken: refreshToken, profile: profile },function(err,user){
 		done(null,user);
 	});
@@ -86,10 +89,14 @@ app.get('/login',function(req,res){
 });	
 	
 app.get("/test",function(req,res){
-	console.log(req.user);
 	if(req.user && req.user.accessToken){
-		request.get("http://"+hostname+":3000/secret?access_token="+req.user.accessToken,function(err,req,body){
-			res.send(body);
+		Hop.remoteAPI(oauthProvider,function(err,api){
+			api.setOAuthAccessToken(req.user.accessToken);
+			api.ProtectedService.doPost({ input:'foo'},function(err,output){
+				if(!err){
+					res.send(output);
+				} else res.send(500,err);
+			});
 		});
 	} else {
 		res.send("Please authenticate with oauth first");
