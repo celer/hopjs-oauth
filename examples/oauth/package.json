@@ -1,0 +1,18 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.0.0rc4",
+    "jade": "*",
+    "tracer": ">= 0.5.1",
+    "node-uuid": ">=1.3.3",
+    "connect": "~2.7.1",
+    "oauth2-provider": "~1.2.0",
+    "redis": "~0.8.2",
+    "hopjs": "0.0.5"
+  }
+}

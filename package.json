@@ -1,0 +1,19 @@
+{
+  "name": "hopjs-oauth",
+  "version": "0.0.1",
+  "description": "OAuth2 provider support for hopjs",
+  "main": "index.js",
+  "keywords": [
+    "oauth",
+    "hopjs"
+  ],
+  "engine": "node 0.8.9",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/celer/hopjs-oauth.git"
+  },
+  "dependencies": {
+    "oauth2-provider": "~1.2.0",
+    "hopjs": "0.0.5"
+  }
+}
