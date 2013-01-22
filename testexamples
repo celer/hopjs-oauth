@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+var common = require('hopjs-common');
+
+console.log("Installing test framework");
+common.requireOnDemand(["element34"],function(err,res){
+	if(!res){
+		console.error("Unable to install element34");
+		process.exit(-1);
+	}
+
+	var element34 = require('element34');
+
+	console.log("Starting provider");
+	common.startExample("examples/provider",{ port:3000 },  function(err,provider){
+		if(err){
+			console.error("Error running provider:",err);
+			process.exit(-1);
+		}
+		console.log("Starting consumer");
+		common.startExample("examples/consumer",{ port:3010 },  function(err,consumer){
+		
+			if(err){
+				console.error("Error running consumer:",err);
+				process.exit(-1);
+			}
+
+
+			element34.browser("http://localhost:3010",function(err,browser){
+				browser.open("/",function(){
+
+					browser.click("link=Perform oauth with hop",function(){
+			
+						browser.typeSync("username","test");
+						browser.typeSync("password","test");
+						browser.submit("xpath=//form",function(){
+					
+
+						browser.clickSync("name=allow");
+						browser.clickSync("link=Test to see if oauth is working");
+	
+						var result = browser.getHtmlSourceSync();
+
+						browser.closeSync();
+
+						provider.kill();
+						consumer.kill();	
+						
+						if(result.indexOf('redkittens')!=1){
+							console.log("Passed");
+							process.exit(0);
+						} else {
+							console.log("Failed");
+							process.exit(-2);
+						}
+
+
+						});
+
+					});
+				});
+			});
+		
+
+
+
+		});
+	});
+
+});

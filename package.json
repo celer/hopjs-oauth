@@ -1,12 +1,15 @@
 {
   "name": "hopjs-oauth",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "OAuth2 provider support for hopjs",
   "main": "index.js",
   "keywords": [
     "oauth",
     "hopjs"
   ],
+	"scripts":{
+		"test":"./testexamples"
+	},
   "engine": "node 0.8.9",
   "repository": {
     "type": "git",
@@ -14,6 +17,6 @@
   },
   "dependencies": {
     "oauth2-provider": "~1.2.0",
-    "hopjs": ">=0.0.8"
+		"hopjs-common":">0.0.2"
   }
 }
