@@ -6,11 +6,10 @@
     "start": "node app"
   },
   "dependencies": {
+    "hopjs-remote": ">=0.0.5",
     "express": "3.0.6",
     "jade": "*",
     "passport": "~0.1.15",
-    "passport-oauth": "~0.1.13",
-    "request": "~2.12.0",
-    "hopjs-remote": ">=0.0.2"
+    "passport-oauth": "~0.1.13"
   }
 }
