@@ -43,17 +43,30 @@ common.requireOnDemand(["element34"],function(err,res){
 
 						browser.closeSync();
 
+						provider.on("exit",function(){
+								console.log("Provider exited");
+						});
+
+						
+						consumer.on("exit",function(){
+								console.log("Provider exited");
+						});
+
 						provider.kill();
 						consumer.kill();	
 						
-						if(result.indexOf('redkittens')!=1){
-							console.log("Passed");
-							process.exit(0);
-						} else {
-							console.log("Failed");
-							process.exit(-2);
-						}
-
+						provider.kill('SIGKILL');
+						consumer.kill('SIGKILL');	
+						
+						setTimeout(function(){	
+							if(result.indexOf('redkittens')!=1){
+								console.log("Passed");
+								process.exit(0);
+							} else {
+								console.log("Failed");
+								process.exit(-2);
+							}
+						},2000);
 
 						});
 

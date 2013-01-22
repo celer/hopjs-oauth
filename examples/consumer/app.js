@@ -43,7 +43,7 @@ passport.use('provider',new OAuth2Strategy({
 	authorizationURL: 'http://'+hostname+':3000/oauth/authorize',
 	tokenURL:'http://'+hostname+':3000/oauth/access_token',
 	clientID:'hopjs-oauth-client',
-	clientSecret: '234234324324',
+	clientSecret: 'clientSecret',
 	callbackURL:'http://'+hostname+':3010/auth/provider/callback'
 },function(accessToken,refreshToken,profile,done){
 	User.findOrCreate({ accessToken : accessToken, refreshToken: refreshToken, profile: profile },function(err,user){
